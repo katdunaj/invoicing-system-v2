@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2bc97a90-2011-4853-8755-e051af04fb29" name="Changes" comment="new verrsion">
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/app/invoicing-system-v2.app.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/InvoiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/configuration/Configurations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/configuration/JpaConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/configuration/JsonServiceConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/configuration/MongoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/configuration/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/controllers/InvoiceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/controllers/InvoiceControllerApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/controllers/TaxCalculatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/db/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/db/FileBaseData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/db/InMemoryDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/db/JpaDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/db/MongoDbDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/db/SqlDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/dto/InvoiceListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/dto/mappers/InvoiceListMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/dto/mappers/impl/InvoiceListMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/file/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/file/JsonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/handler/UserExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/model/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/model/Invoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/model/InvoiceEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/model/TaxReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/model/Vat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/repository/InvoiceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/service/InvoiceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/invoicing/service/TaxCalculatorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/InvoiceApplicationTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/TaxCalculatorControllerTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/DatabaseTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/FileBaseDataTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/InMemoryDatabaseTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/JpaDatabaseTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/MongoDbDatabaseTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/SqlDatabaseTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/CompanyFixture.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceEntryFixture.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceFixture.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/InvoiceServiceTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/TaxCalculatorServiceTest.groovy" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="28Ij9nydiNFUH57S2I5ZDdQGgXI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\invoicing-system-v2" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2bc97a90-2011-4853-8755-e051af04fb29" name="Changes" comment="" />
+      <created>1650910844624</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650910844624</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Inital Commit">
+      <created>1650912499169</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1650912499169</updated>
+    </task>
+    <task id="LOCAL-00002" summary="copy package">
+      <created>1650913869576</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650913869576</updated>
+    </task>
+    <task id="LOCAL-00003" summary="copy package">
+      <created>1650914254269</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650914254269</updated>
+    </task>
+    <task id="LOCAL-00004" summary="new verrsion">
+      <created>1650914317492</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650914317492</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Inital Commit" />
+    <MESSAGE value="copy package" />
+    <MESSAGE value="new verrsion" />
+    <option name="LAST_COMMIT_MESSAGE" value="new verrsion" />
+  </component>
+</project>
