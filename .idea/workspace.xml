@@ -4,12 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc97a90-2011-4853-8755-e051af04fb29" name="Changes" comment="copy package">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflow/main.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    <list default="true" id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment="add noSQL database, MongoDbDatabase">
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/checkstyle/checkstyle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyControllerApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/repository/generic/GenericRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/TaxReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/company/CompanyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/company/GenericRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ID" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/JSON" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-file.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-memory.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-mongo.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-sql.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__Create-company_table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V2__Create_vat_table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V3__Create_invoice_table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V4__Create_invoice_entry_table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/idkeeper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/CompanyControllerTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/GenericRepositoryTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/InvoiceRepositoryTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/model/Vat.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflow/main.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflow/main.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/InvoiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/InvoiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/configuration/Configurations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/configuration/JpaConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/configuration/JpaConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/configuration/JsonServiceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/configuration/JsonServiceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/configuration/MongoConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/configuration/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/configuration/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/controllers/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/InvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/controllers/InvoiceControllerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/InvoiceControllerApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/controllers/TaxCalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/TaxCalculatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/db/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/db/FileBaseData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/db/InMemoryDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/db/JpaDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/db/MongoDbDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/db/SqlDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/dto/InvoiceListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/dto/mappers/InvoiceListMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/dto/mappers/impl/InvoiceListMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/file/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/file/JsonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/handler/UserExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/handler/UserExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Invoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/model/InvoiceEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/InvoiceEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/model/TaxReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/model/Vat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Vat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/repository/InvoiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/repository/InvoiceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/InvoiceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/invoicing/service/TaxCalculatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/TaxCalculatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/FileBaseDataTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/FileBaseDataTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/CompanyFixture.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/CompanyFixture.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceEntryFixture.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceEntryFixture.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,23 +87,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <task path="$PROJECT_DIR$/app">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="invoicing-system-kdunaj" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="invoicing-system-kdunaj" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
               </path>
             </expand>
             <select />
@@ -49,10 +101,18 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="task15" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,7 +124,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="28Ij9nydiNFUH57S2I5ZDdQGgXI" />
+  <component name="ProjectId" id="27EUHGZ0uhnW6OKGcEHeNYNJQ8C" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -74,65 +134,213 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.futurecollars.invoicing.service" />
+      <recent name="pl.futurecollars.invoicing.service.company" />
+      <recent name="pl.futurecollars.invoicing.model" />
+      <recent name="pl.futurecollars.invoicing.dto.mappers" />
+      <recent name="pl.futurecollars.invoicing.fixtures" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\invoicing-system-kdunaj\src\main\resources\db" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\invoicing-system-v2" />
+      <recent name="C:\invoicing-system-kdunaj\src\main\resources\db\migration" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="pl.futurecollars.invoicing.service.company" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.InvoiceApplication">
+    <configuration name="FileBaseDataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-system-kdunaj.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.futurecollars.invoicing.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.db" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.db.FileBaseDataTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InvoiceControllerExtraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-system-kdunaj.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.futurecollars.invoicing.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.controllers" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.controllers.InvoiceControllerExtraTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SqlDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-system-kdunaj.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.futurecollars.invoicing.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.db" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.db.SqlDatabaseTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaxCalculatorControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-system-kdunaj.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.futurecollars.invoicing.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.controllers" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.controllers.TaxCalculatorControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaxCalculatorServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoicing-system-kdunaj.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.futurecollars.invoicing.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.service" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.service.TaxCalculatorServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TaxCalculatorServiceTest" />
+        <item itemvalue="JUnit.TaxCalculatorControllerTest" />
+        <item itemvalue="JUnit.SqlDatabaseTest" />
+        <item itemvalue="JUnit.InvoiceControllerExtraTest" />
+        <item itemvalue="JUnit.FileBaseDataTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2bc97a90-2011-4853-8755-e051af04fb29" name="Changes" comment="" />
-      <created>1650910844624</created>
+      <changelist id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment="" />
+      <created>1648884651263</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1650910844624</updated>
+      <updated>1648884651263</updated>
     </task>
-    <task id="LOCAL-00001" summary="Inital Commit">
-      <created>1650912499169</created>
+    <task id="LOCAL-00001" summary="Configured Swagger">
+      <created>1648885614619</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1650912499169</updated>
+      <updated>1648885614619</updated>
     </task>
-    <task id="LOCAL-00002" summary="copy package">
-      <created>1650913869576</created>
+    <task id="LOCAL-00002" summary="TaxCalculatorController and TaxCalculatorService">
+      <created>1648923759166</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1650913869576</updated>
+      <updated>1648923759166</updated>
     </task>
-    <task id="LOCAL-00003" summary="copy package">
-      <created>1650914254269</created>
+    <task id="LOCAL-00003" summary="TaxCalculatorControllerTest and TaxCalculatorServiceTest">
+      <created>1649141282981</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1650914254269</updated>
+      <updated>1649141282981</updated>
     </task>
-    <task id="LOCAL-00004" summary="new verrsion">
-      <created>1650914317492</created>
+    <task id="LOCAL-00004" summary="TaxCalculatorControllerTest and TaxCalculatorServiceTest">
+      <created>1649153210599</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1650914317492</updated>
+      <updated>1649153210599</updated>
     </task>
-    <task id="LOCAL-00005" summary="copy package">
-      <created>1650914776508</created>
+    <task id="LOCAL-00005" summary="First commit with new implementation">
+      <created>1649506796589</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1650914776508</updated>
+      <updated>1649506796589</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Second commit with new implementation, without mistake">
+      <created>1649697264372</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649697264372</updated>
+    </task>
+    <task id="LOCAL-00007" summary="setup database with flyway">
+      <created>1649775783882</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649775783882</updated>
+    </task>
+    <task id="LOCAL-00008" summary="created database sql">
+      <created>1649947223846</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649947223846</updated>
+    </task>
+    <task id="LOCAL-00009" summary="jpa database add">
+      <created>1650657412856</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650657412856</updated>
+    </task>
+    <task id="LOCAL-00010" summary="jpa database add">
+      <created>1650658955401</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1650658955401</updated>
+    </task>
+    <task id="LOCAL-00011" summary="jpa database add, delete mistakr">
+      <created>1650696259839</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1650696259839</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add noSQL database, MongoDbDatabase">
+      <created>1650708332704</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650708332704</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -144,12 +352,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Inital Commit" />
-    <MESSAGE value="new verrsion" />
-    <MESSAGE value="copy package" />
-    <option name="LAST_COMMIT_MESSAGE" value="copy package" />
+    <MESSAGE value="Configured Swagger" />
+    <MESSAGE value="TaxCalculatorController and TaxCalculatorService" />
+    <MESSAGE value="TaxCalculatorControllerTest and TaxCalculatorServiceTest" />
+    <MESSAGE value="First commit with new implementation" />
+    <MESSAGE value="Second commit with new implementation, without mistake" />
+    <MESSAGE value="setup database with flyway" />
+    <MESSAGE value="created database sql" />
+    <MESSAGE value="jpa database add" />
+    <MESSAGE value="jpa database add, delete mistakr" />
+    <MESSAGE value="add noSQL database, MongoDbDatabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="add noSQL database, MongoDbDatabase" />
   </component>
 </project>

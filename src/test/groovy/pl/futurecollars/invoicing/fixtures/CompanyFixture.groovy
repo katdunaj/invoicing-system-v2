@@ -6,8 +6,13 @@ class CompanyFixture {
 
     static company(int id) {
 
-        new Company("123-45-6$id-819"
-                , "Ul.Ogrodowa 6$id, 05-085 Kampinos A"
-                , "Company $id", 1000.00, 500.97)
+        Company.builder()
+                .companyId(UUID.randomUUID())
+                .name("Company $id")
+                .taxIdentificationNumber("123-45-6$id-819")
+                .address("Ul. Ogrodowa 13/$id, 01-001 Kampinos")
+                .healthyInsurance(1000.00)
+                .pensionInsurance(500.97)
+                .build()
     }
 }
