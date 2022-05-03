@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment=" Implement support for companies">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceFixture.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceFixture.groovy" afterDir="false" />
-    </list>
+    <list default="true" id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment=" Implement support for companies" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +18,20 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="invoicing-system-kdunaj" type="f1a62948:ProjectNode" />
+                <item name="invoicing-system-v2" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="invoicing-system-v2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
             </expand>
             <select />
@@ -51,7 +51,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="task15" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
