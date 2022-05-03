@@ -75,6 +75,18 @@ class InvoiceControllerTest extends Specification {
         invoices.size() > 0
         invoices[0] == invoice
     }
+    def "should return short list of all invoices  " () {
+        when:
+        def response = mockMvc.perform(get("/invoices/list"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .response
+                .contentAsString
+
+        then:
+        response != null
+
+    }
 
     def "should return short list of invoices"() {
         when:
