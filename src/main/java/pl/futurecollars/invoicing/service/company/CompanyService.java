@@ -3,8 +3,11 @@ package pl.futurecollars.invoicing.service.company;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.futurecollars.invoicing.dto.CompanyListDto;
+import pl.futurecollars.invoicing.dto.mappers.CompanyListMapper;
 import pl.futurecollars.invoicing.model.Company;
 import pl.futurecollars.invoicing.repository.generic.CompanyRepository;
 
@@ -12,11 +15,16 @@ import pl.futurecollars.invoicing.repository.generic.CompanyRepository;
 @Service
 public class CompanyService implements GenericRepository<Company> {
 
-   private final CompanyRepository companyRepository;
+  private final CompanyRepository companyRepository;
+  private final CompanyListMapper companyListMapper;
 
   @Override
   public Company save(Company company) {
     return companyRepository.save(company);
+  }
+
+  public List<CompanyListDto> getList() {
+    return getAll().stream().map(companyListMapper::companyListToDto).collect(Collectors.toList());
   }
 
   @Override
