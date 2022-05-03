@@ -5,11 +5,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import pl.futurecollars.invoicing.db.Database
 import pl.futurecollars.invoicing.fixtures.InvoiceFixture
 import pl.futurecollars.invoicing.model.Invoice
 
 import pl.futurecollars.invoicing.file.JsonService
+import pl.futurecollars.invoicing.service.InvoiceService
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -27,15 +27,20 @@ class InvoiceControllerExtraTest extends Specification {
     private MockMvc mockMvc
 
     @Autowired
-    private Database database
+    private InvoiceService invoiceRepository
 
-    def cleanup() { database.clear() }
+    def setup() {
+        invoiceRepository.clear() }
+
+    def cleanup() {
+        invoiceRepository.clear() }
 
     @Autowired
     private JsonService<Invoice> jsonService
 
     @Autowired
     private JsonService<Invoice[]> jsonListService
+
 
     @Shared
     def invoice = InvoiceFixture.invoice(1)
@@ -84,10 +89,8 @@ class InvoiceControllerExtraTest extends Specification {
 
         def invoices = jsonListService.convertToObject(response, Invoice[].class)
 
-
         then:
         invoices.length == 2
-
     }
 
     def "should update not existing invoice"() {
@@ -102,25 +105,24 @@ class InvoiceControllerExtraTest extends Specification {
                 .response
                 .contentAsString
 
-        def id = jsonService.convertToObject(postResponse, Invoice.class).getId()
-        invoice.setId(id)
+        def responseAsInvoice = jsonService.convertToObject(postResponse, Invoice.class)
+        def id = responseAsInvoice.getInvoiceId()
+        invoice.setInvoiceId(id)
+        invoice.getIssuer().setCompanyId(responseAsInvoice.getIssuer().getCompanyId())
+        invoice.getReceiver().setCompanyId(responseAsInvoice.getReceiver().getCompanyId())
 
         UUID updatedId
         for (updatedId = UUID.randomUUID(); updatedId == id;) {
             updatedId = UUID.randomUUID()
         }
 
-
         def updatedInvoice = InvoiceFixture.invoice(1)
-        updatedInvoice.setId(updatedId)
+        updatedInvoice.setInvoiceId(updatedId)
         def updatedInvoiceAsJson = jsonService.convertToJson(updatedInvoice)
 
-        def putResponse = mockMvc.perform(
+        mockMvc.perform(
                 put("/invoices").content(updatedInvoiceAsJson).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andReturn()
-                .response
-                .contentAsString
 
         def response = mockMvc.perform(get("/invoices"))
                 .andExpect(status().isOk())
@@ -133,7 +135,6 @@ class InvoiceControllerExtraTest extends Specification {
         then:
         invoice != updatedInvoice
         invoices[0] == invoice
-        putResponse == ""
     }
 
     def "should delete not existing invoice"() {
@@ -148,8 +149,11 @@ class InvoiceControllerExtraTest extends Specification {
                 .response
                 .contentAsString
 
-        def id = jsonService.convertToObject(postResponse, Invoice.class).getId()
-        invoice.setId(id)
+        def responseAsInvoice = jsonService.convertToObject(postResponse, Invoice.class)
+        def id = responseAsInvoice.getInvoiceId()
+        invoice.setInvoiceId(id)
+        invoice.getIssuer().setCompanyId(responseAsInvoice.getIssuer().getCompanyId())
+        invoice.getReceiver().setCompanyId(responseAsInvoice.getReceiver().getCompanyId())
 
         UUID updatedId
         for (updatedId = UUID.randomUUID(); updatedId == id;) {
@@ -204,12 +208,12 @@ class InvoiceControllerExtraTest extends Specification {
                 .response
                 .contentAsString
 
-        def id = jsonService.convertToObject(postResponse, Invoice.class).getId()
-        invoice.setId(id)
-        def id1 = jsonService.convertToObject(post1Response, Invoice.class).getId()
-        invoice1.setId(id1)
-        def id2 = jsonService.convertToObject(post2Response, Invoice.class).getId()
-        invoice2.setId(id2)
+        def id = jsonService.convertToObject(postResponse, Invoice.class).getInvoiceId()
+        invoice.setInvoiceId(id)
+        def id1 = jsonService.convertToObject(post1Response, Invoice.class).getInvoiceId()
+        invoice1.setInvoiceId(id1)
+        def id2 = jsonService.convertToObject(post2Response, Invoice.class).getInvoiceId()
+        invoice2.setInvoiceId(id2)
 
         def deleteResponse = mockMvc.perform(
                 delete("/invoices/" + id1))
@@ -231,4 +235,3 @@ class InvoiceControllerExtraTest extends Specification {
         invoices.length == 2
     }
 }
-

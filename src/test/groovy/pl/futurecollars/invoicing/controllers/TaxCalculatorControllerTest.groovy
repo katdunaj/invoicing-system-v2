@@ -5,19 +5,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import pl.futurecollars.invoicing.db.Database
+import pl.futurecollars.invoicing.file.JsonService
+import pl.futurecollars.invoicing.fixtures.CompanyFixture
 import pl.futurecollars.invoicing.fixtures.InvoiceFixture
 import pl.futurecollars.invoicing.model.Company
 import pl.futurecollars.invoicing.model.Invoice
-import pl.futurecollars.invoicing.model.TaxReport
-
-import pl.futurecollars.invoicing.file.JsonService
+import pl.futurecollars.invoicing.service.InvoiceService
+import pl.futurecollars.invoicing.service.TaxReport
 import spock.lang.Shared
 import spock.lang.Specification
 
+import java.math.RoundingMode
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-
 @SpringBootTest
 @AutoConfigureMockMvc
 class TaxCalculatorControllerTest extends Specification {
@@ -35,53 +36,55 @@ class TaxCalculatorControllerTest extends Specification {
     private JsonService<TaxReport> jsonServiceTaxReport
 
     @Autowired
-    private Database database
+    private InvoiceService invoiceService
 
     @Shared
-    def invoice = InvoiceFixture.invoice(0)
-    def invoice1 = InvoiceFixture.invoice(4)
+    def invoice = InvoiceFixture.invoice(4)
+    def invoice1 = InvoiceFixture.invoice(1)
+    def company = CompanyFixture.company(4)
 
     def setup() {
-        database.clear()
-
-        def invoiceAsJson = jsonServiceInvoice.convertToJson(invoice)
-        def invoice1AsJson = jsonServiceInvoice.convertToJson(invoice1)
-
-        mockMvc.perform(
-                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-
-        mockMvc.perform(
-                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-
+        invoiceService.clear()
     }
 
-    def cleanup() { database.clear() }
+    def cleanup() {
+        invoiceService.clear()
+    }
 
     def "Should get tax report for company(4)"() {
         given:
-        def companyAsJson = jsonServiceCompany.convertToJson(invoice1.getIssuer())
-        def taxReport = new TaxReport.TaxReportBuilder()
-                .setIncomingVat(BigDecimal.valueOf(345))
-                .setOutgoingVat(BigDecimal.valueOf(0))
-                .setIncome(BigDecimal.valueOf(1500))
-                .setCosts(BigDecimal.valueOf(0))
-                .setIncomeMinusCosts(BigDecimal.valueOf(1500))
-                .setVatToPay(BigDecimal.valueOf(345))
-                .setPensionInsurance(BigDecimal.valueOf(500.97))
-                .setIncomeMinusCostsMinusPensionInsurance(BigDecimal.valueOf(999.03))
-                .setTaxCalculationBase(BigDecimal.valueOf(999))
-                .setIncomeTax(BigDecimal.valueOf(189.81))
-                .setHealthInsurance9(BigDecimal.valueOf(90))
-                .setHealthInsurance775(BigDecimal.valueOf(80))
-                .setIncomeTaxMinusHealthInsurance(BigDecimal.valueOf(109.81))
-                .setFinalIncomeTaxValue(BigDecimal.valueOf(109))
+        invoice.getIssuer().setCompanyId(company.getCompanyId())
+        invoice.getIssuer().setTaxIdentificationNumber(company.getTaxIdentificationNumber())
+        invoice1.getReceiver().setCompanyId(company.getCompanyId())
+        invoice1.getReceiver().setTaxIdentificationNumber(company.getTaxIdentificationNumber())
+        def invoiceAsJson = jsonServiceInvoice.convertToJson(invoice)
+        def invoice1AsJson = jsonServiceInvoice.convertToJson(invoice1)
+        mockMvc.perform(
+                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+        mockMvc.perform(
+                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+        def updatedCompanyAsJson = jsonServiceCompany.convertToJson(company)
+        def taxReport = TaxReport.builder()
+                .incomingVat(BigDecimal.valueOf(240.00).setScale(2, RoundingMode.HALF_UP))
+                .outgoingVat(BigDecimal.valueOf(96.00).setScale(2, RoundingMode.HALF_UP))
+                .income(BigDecimal.valueOf(3000.00).setScale(2, RoundingMode.HALF_UP))
+                .costs(BigDecimal.valueOf(1200.00).setScale(2, RoundingMode.HALF_UP))
+                .incomeMinusCosts(BigDecimal.valueOf(1800.00).setScale(2, RoundingMode.HALF_UP))
+                .vatToPay(BigDecimal.valueOf(144.00).setScale(2, RoundingMode.HALF_UP))
+                .pensionInsurance(BigDecimal.valueOf(500.97).setScale(2, RoundingMode.HALF_UP))
+                .incomeMinusCostsMinusPensionInsurance(BigDecimal.valueOf(1299.03).setScale(2, RoundingMode.HALF_UP))
+                .taxCalculationBase(BigDecimal.valueOf(1299).setScale(2, RoundingMode.HALF_UP))
+                .incomeTax(BigDecimal.valueOf(246.81).setScale(2, RoundingMode.HALF_UP))
+                .healthInsurance9(BigDecimal.valueOf(90.00).setScale(2, RoundingMode.HALF_UP))
+                .healthInsurance775(BigDecimal.valueOf(77.50).setScale(2, RoundingMode.HALF_UP))
+                .incomeTaxMinusHealthInsurance(BigDecimal.valueOf(169.31).setScale(2, RoundingMode.HALF_UP))
+                .finalIncomeTaxValue(BigDecimal.valueOf(169.00).setScale(2, RoundingMode.HALF_UP))
                 .build()
-
         when:
         def response = mockMvc.perform(
-                post("/tax").content(companyAsJson).contentType(MediaType.APPLICATION_JSON))
+                post("/tax").content(updatedCompanyAsJson).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response

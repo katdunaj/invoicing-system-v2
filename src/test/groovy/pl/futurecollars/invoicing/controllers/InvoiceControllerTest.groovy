@@ -16,10 +16,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 
 @SpringBootTest
-@AutoConfigureMockMvc
 @Stepwise
+@AutoConfigureMockMvc
 class InvoiceControllerTest extends Specification {
 
     @Autowired
@@ -28,35 +29,34 @@ class InvoiceControllerTest extends Specification {
     @Autowired
     private JsonService<Invoice> jsonService
 
-
     @Autowired
     private JsonService<Invoice[]> jsonListService
 
     @Shared
     def invoice = InvoiceFixture.invoice(1)
-    def invoice1 = InvoiceFixture.invoice(3)
-    def invoice2 = InvoiceFixture.invoice(5)
 
     @Shared
-    UUID id
+    def updatedInvoice = InvoiceFixture.invoice(1)
 
-    def "should add one invoice"() {
-
+    def "should add single invoice"() {
         given:
         def invoiceAsJson = jsonService.convertToJson(invoice)
 
         when:
-        def response = mockMvc.perform(post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON))
+        def response = mockMvc.perform(
+                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
                 .contentAsString
 
-        id = jsonService.convertToObject(response, Invoice.class).getId()
-        invoice.setId(id)
+        def responseAsInvoice = jsonService.convertToObject(response, Invoice.class)
+        invoice.setInvoiceId(responseAsInvoice.getInvoiceId())
+        invoice.getIssuer().setCompanyId(responseAsInvoice.getIssuer().getCompanyId())
+        invoice.getReceiver().setCompanyId(responseAsInvoice.getReceiver().getCompanyId())
 
         then:
-        invoice == jsonService.convertToObject(response, Invoice.class)
+        invoice == responseAsInvoice
 
     }
 
@@ -75,14 +75,29 @@ class InvoiceControllerTest extends Specification {
         invoices[0] == invoice
     }
 
+    def "should return short list of invoices"() {
+        when:
+        def response = mockMvc.perform(get("/invoices/list"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .response
+                .contentAsString
+
+        then:
+        response != null
+    }
+
     def "should update invoice"() {
         given:
-        updatedInvoice.setId(id)
+        updatedInvoice.setInvoiceId(invoice.getInvoiceId())
+        updatedInvoice.getIssuer().setCompanyId(invoice.getIssuer().getCompanyId())
+        updatedInvoice.getReceiver().setCompanyId(invoice.getReceiver().getCompanyId())
+
         def updatedInvoiceAsJson = jsonService.convertToJson(updatedInvoice)
 
         when:
         def response = mockMvc.perform(
-                post("/invoices").content(updatedInvoiceAsJson).contentType(MediaType.APPLICATION_JSON))
+                put("/invoices").content(updatedInvoiceAsJson).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -93,6 +108,9 @@ class InvoiceControllerTest extends Specification {
     }
 
     def "should return updatedInvoice by id"() {
+        given:
+        def id = updatedInvoice.getInvoiceId()
+
         when:
         def response = mockMvc.perform(get("/invoices/" + id))
                 .andExpect(status().isOk())
@@ -105,6 +123,9 @@ class InvoiceControllerTest extends Specification {
     }
 
     def "should delete invoice by id"() {
+        given:
+        def id = updatedInvoice.getInvoiceId()
+
         when:
         def response = mockMvc.perform(delete("/invoices/" + id))
                 .andExpect(status().isOk())
@@ -131,5 +152,3 @@ class InvoiceControllerTest extends Specification {
         response == "[]"
     }
 }
-
-

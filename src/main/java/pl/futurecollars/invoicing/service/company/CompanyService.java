@@ -6,12 +6,13 @@ import java.util.UUID;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.futurecollars.invoicing.model.Company;
+import pl.futurecollars.invoicing.repository.generic.CompanyRepository;
 
 @AllArgsConstructor
 @Service
 public class CompanyService implements GenericRepository<Company> {
 
-  private final CompanyRepository companyRepository;
+   private final CompanyRepository companyRepository;
 
   @Override
   public Company save(Company company) {

@@ -1,86 +1,91 @@
 package pl.futurecollars.invoicing.service
 
-import pl.futurecollars.invoicing.db.Database
+import pl.futurecollars.invoicing.fixtures.CompanyFixture
 import pl.futurecollars.invoicing.fixtures.InvoiceFixture
 import spock.lang.Shared
 import spock.lang.Specification
 
 class TaxCalculatorServiceTest extends Specification {
 
-    private Database database = Mock()
+    private InvoiceService  invoiceService = Mock()
 
-    private TaxCalculatorService taxCalculatorService = new TaxCalculatorService(database)
+    private TaxCalculatorService taxCalculatorService = new TaxCalculatorService(invoiceService)
 
     @Shared
-    def invoice = InvoiceFixture.invoice(1)
-
-    def invoice1 = InvoiceFixture.invoice(2)
-
-    def invoiceGasoline = InvoiceFixture.invoiceWithGasoline(2)
+    def invoice = InvoiceFixture.invoice(5)
+    def invoice1 = InvoiceFixture.invoice(1)
+    def invoiceGasoline = InvoiceFixture.invoiceWithGasoline(1)
+    def company2 = CompanyFixture.company(2)
 
     def setup() {
-        database.getAll() >> [invoice, invoice1, invoiceGasoline]
+        invoice.getIssuer().setTaxIdentificationNumber(company2.getTaxIdentificationNumber())
+        invoice1.getReceiver().setTaxIdentificationNumber(company2.getTaxIdentificationNumber())
+        invoiceGasoline.getReceiver().setTaxIdentificationNumber(company2.getTaxIdentificationNumber())
+        invoiceService.getAll() >> [invoice, invoice1, invoiceGasoline]
     }
+
 
     def "should calculate income for company(2)"() {
         when:
-        def result = taxCalculatorService.income(invoice1.getIssuer().getTaxIdentificationNumber())
+        def result = taxCalculatorService.income(company2.getTaxIdentificationNumber())
         then:
-        result == 1701
+        result ==  3600.00
     }
 
     def "should calculate cost for company(2)"() {
         when:
-        def result = taxCalculatorService.costs(invoice.getReceiver().getTaxIdentificationNumber())
+        def result = taxCalculatorService.costs(company2.getTaxIdentificationNumber())
+
         then:
-        result == 611.62
+        result == 2484.74
     }
 
     def "should calculate incoming VAT for company(2)"() {
         when:
-        def result = taxCalculatorService.incomingVat(invoice1.getIssuer().getTaxIdentificationNumber())
+        def result = taxCalculatorService.incomingVat(company2.getTaxIdentificationNumber())
         then:
-        result == 391.23
+        result == 288.00
     }
 
     def "should calculate outgoing VAT for company(2)"() {
         when:
-        def result = taxCalculatorService.outgoingVat(invoice.getReceiver().getTaxIdentificationNumber())
+        def result = taxCalculatorService.outgoingVat(company2.getTaxIdentificationNumber())
+
         then:
-        result == 126.39
+        result == 241.49
     }
 
     def "should calculate earnings for company(2)"() {
         when:
-        def result = taxCalculatorService.incomeMinusCosts(invoice1.getIssuer().getTaxIdentificationNumber())
+        def result = taxCalculatorService.incomeMinusCosts(company2.getTaxIdentificationNumber())
         then:
-        result == 1089.38
+        result == 1115.26
     }
 
     def "should calculate VAT to pay for company(2)"() {
         when:
-        def result = taxCalculatorService.vatToPay(invoice1.getIssuer().getTaxIdentificationNumber())
+        def result = taxCalculatorService.vatToPay(company2.getTaxIdentificationNumber())
         then:
-        result == 264.84
+        result == 46.51
     }
 
     def "should generate tax Report for company(2)"() {
         when:
-        def result = taxCalculatorService.taxReport(invoice1.getIssuer())
+        def result =  taxCalculatorService.getTaxReport(company2)
         then:
-        result.getIncome() == 1701
-        result.getCosts() == 611.62
-        result.getIncomingVat() == 391.23
-        result.getOutgoingVat() == 126.39
-        result.getIncomeMinusCosts() == 1089.38
-        result.getVatToPay() == 264.84
+        result.getIncome() == 3600.00
+        result.getCosts() == 2484.74
+        result.getIncomingVat() == 288.00
+        result.getOutgoingVat() == 241.49
+        result.getIncomeMinusCosts() == 1115.26
+        result.getVatToPay() == 46.51
         result.getPensionInsurance() == 500.97
-        result.getIncomeMinusCostsMinusPensionInsurance() == 588.41
-        result.getTaxCalculationBase() == 588
-        result.getIncomeTax() == 111.72
-        result.getHealthInsurance9() == 90
-        result.getHealthInsurance775() == 80
-        result.getIncomeTaxMinusHealthInsurance() == 31.72
-        result.getFinalIncomeTaxValue() == 31
+        result.getIncomeMinusCostsMinusPensionInsurance() == 614.29
+        result.getTaxCalculationBase() == 614.00
+        result.getIncomeTax() == 116.66
+        result.getHealthInsurance9() == 90.00
+        result.getHealthInsurance775() == 77.50
+        result.getIncomeTaxMinusHealthInsurance() == 39.16
+        result.getFinalIncomeTaxValue() == 39.00
     }
 }
