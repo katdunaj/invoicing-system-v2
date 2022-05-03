@@ -5,28 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment=" Implement support for companies">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.groovy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/repository/generic/CompanyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyControllerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyControllerApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/InvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/TaxReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/TaxReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/company/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/company/CompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/CompanyControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/CompanyControllerTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/file/JsonService.groovy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/TaxCalculatorControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/TaxCalculatorControllerTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/DatabaseTest.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/FileBaseDataTest.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/InMemoryDatabaseTest.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/JpaDatabaseTest.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/MongoDbDatabaseTest.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/SqlDatabaseTest.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/CompanyFixture.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/CompanyFixture.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/InvoiceServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/InvoiceServiceTest.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/TaxCalculatorServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/TaxCalculatorServiceTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceFixture.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/fixtures/InvoiceFixture.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +96,7 @@
       <recent name="pl.futurecollars.invoicing.service.company" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TaxCalculatorServiceTest">
+  <component name="RunManager" selected="JUnit.TaxCalculatorControllerTest">
     <configuration name="CompanyControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="invoicing-system-kdunaj.test" />
       <extension name="coverage">
@@ -189,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaxCalculatorServiceTest" />
-        <item itemvalue="JUnit.CompanyControllerTest" />
         <item itemvalue="JUnit.TaxCalculatorControllerTest" />
-        <item itemvalue="JUnit.SqlDatabaseTest" />
         <item itemvalue="JUnit.InvoiceControllerExtraTest" />
+        <item itemvalue="JUnit.CompanyControllerTest" />
+        <item itemvalue="JUnit.TaxCalculatorServiceTest" />
+        <item itemvalue="JUnit.SqlDatabaseTest" />
       </list>
     </recent_temporary>
   </component>
@@ -297,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651259549364</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=" Implement support for companies">
+      <created>1651566249151</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1651566249151</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">
