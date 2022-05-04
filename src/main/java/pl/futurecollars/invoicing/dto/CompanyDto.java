@@ -18,9 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CompanyDto {
 
-  @Id
   @ApiModelProperty(hidden = true)
-  @GeneratedValue
   private UUID companyId;
 
   @NotEmpty
