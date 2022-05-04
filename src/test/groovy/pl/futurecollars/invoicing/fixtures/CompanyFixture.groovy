@@ -8,7 +8,7 @@ class CompanyFixture {
         Company.builder()
                 .companyId(UUID.randomUUID())
                 .name("Company $id")
-                .taxIdentificationNumber("123-45-6$id-819")
+                .taxIdentificationNumber("123456${id}819")
                 .address("Ul. Ogrodowa 13/$id, 01-098 Kampinos")
                 .healthyInsurance(1000.00)
                 .pensionInsurance(500.97)
