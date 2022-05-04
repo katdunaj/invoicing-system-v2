@@ -5,10 +5,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
+import pl.futurecollars.invoicing.dto.CompanyDto
+import pl.futurecollars.invoicing.dto.mappers.CompanyMapper
 import pl.futurecollars.invoicing.file.JsonService
 import pl.futurecollars.invoicing.fixtures.CompanyFixture
-import pl.futurecollars.invoicing.model.Company
-
+import pl.futurecollars.invoicing.service.company.CompanyService
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
@@ -28,23 +29,32 @@ class CompanyControllerTest extends Specification {
     private MockMvc mockMvc
 
     @Autowired
-    private JsonService<Company> jsonService
+    private JsonService<CompanyDto> jsonService
 
     @Autowired
-    private JsonService<Company[]> jsonListService
+    private JsonService<CompanyDto[]> jsonListService
+
+    @Autowired
+    private CompanyMapper companyMapper
+
+    @Autowired
+    CompanyService companyService
 
     @Shared
     def company = CompanyFixture.company(1)
-
-    @Shared
     def updatedCompany = CompanyFixture.company(1)
+    def companyDto = new CompanyDto(company.getCompanyId(), company.getTaxIdentificationNumber(), company.getAddress(),
+            company.getName(), company.getHealthyInsurance(), company.getPensionInsurance())
+    def updatedCompanyDto = new CompanyDto(updatedCompany.getCompanyId(), updatedCompany.getTaxIdentificationNumber(), updatedCompany.getAddress(),
+            updatedCompany.getName(), updatedCompany.getHealthyInsurance(), updatedCompany.getPensionInsurance())
 
     @Shared
     UUID id
 
     def "should add single company"() {
         given:
-        def companyAsJson = jsonService.convertToJson(company)
+        companyService.clear()
+        def companyAsJson = jsonService.convertToJson(companyDto)
 
         when:
         def response = mockMvc.perform(
@@ -54,11 +64,11 @@ class CompanyControllerTest extends Specification {
                 .response
                 .contentAsString
 
-        id = jsonService.convertToObject(response, Company.class).getCompanyId()
-        company.setCompanyId(id)
+        id = jsonService.convertToObject(response, CompanyDto.class).getCompanyId()
+        companyDto.setCompanyId(id)
 
         then:
-        company == jsonService.convertToObject(response, Company.class)
+        companyDto == jsonService.convertToObject(response, CompanyDto.class)
     }
 
     def "should return list of companies"() {
@@ -69,17 +79,29 @@ class CompanyControllerTest extends Specification {
                 .response
                 .contentAsString
 
-        def companies = jsonListService.convertToObject(response, Company[].class)
-
+        def companies = jsonListService.convertToObject(response, CompanyDto[].class)
+        companyDto.setCompanyId(companies[0].getCompanyId())
         then:
         companies.size() > 0
-        companies[0] == company
+        companies.contains(companyDto)
+    }
+
+    def "should return short list of companies"() {
+        when:
+        def response = mockMvc.perform(get("/companies/list"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .response
+                .contentAsString
+
+        then:
+        response != null
     }
 
     def "should update company"() {
         given:
-        updatedCompany.setCompanyId(id)
-        def updatedInvoiceAsJson = jsonService.convertToJson(updatedCompany)
+        updatedCompanyDto.setCompanyId(id)
+        def updatedInvoiceAsJson = jsonService.convertToJson(updatedCompanyDto)
 
         when:
         def response = mockMvc.perform(
@@ -90,7 +112,7 @@ class CompanyControllerTest extends Specification {
                 .contentAsString
 
         then:
-        updatedCompany == jsonService.convertToObject(response, Company.class)
+        updatedCompanyDto == jsonService.convertToObject(response, CompanyDto.class)
     }
 
     def "should return updatedCompany by id"() {
@@ -102,7 +124,7 @@ class CompanyControllerTest extends Specification {
                 .contentAsString
 
         then:
-        updatedCompany == jsonService.convertToObject(response, Company.class)
+        updatedCompanyDto.getTaxIdentificationNumber() == jsonService.convertToObject(response, CompanyDto.class).getTaxIdentificationNumber()
     }
 
     def "should delete company by id"() {
@@ -125,7 +147,7 @@ class CompanyControllerTest extends Specification {
                 .response
                 .contentAsString
 
-        def companies = jsonListService.convertToObject(response, Company[].class)
+        def companies = jsonListService.convertToObject(response, CompanyDto[].class)
 
         then:
         companies.size() == 0
