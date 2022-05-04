@@ -1,5 +1,8 @@
-invoicing-system:
-  database: jpa
+logging:
+  level:
+    root: info
+    pl.futurecollars.invoicing: debug
+    org.springframework: info
 
 spring:
   datasource:
@@ -13,3 +16,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+  security:
+    user:
+      name: admin
+      password: admin

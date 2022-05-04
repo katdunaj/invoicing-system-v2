@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.MockMvc
 import pl.futurecollars.invoicing.file.JsonService
 import pl.futurecollars.invoicing.fixtures.InvoiceFixture
@@ -19,10 +20,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 
+@WithMockUser
 @SpringBootTest
 @Stepwise
 @AutoConfigureMockMvc
-class InvoiceControllerTest extends Specification {
+class InvoiceControllerBasicTest extends Specification {
 
     @Autowired
     private MockMvc mockMvc
@@ -45,7 +47,7 @@ class InvoiceControllerTest extends Specification {
 
         when:
         def response = mockMvc.perform(
-                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON))
+                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -63,7 +65,7 @@ class InvoiceControllerTest extends Specification {
 
     def "should return list of invoices"() {
         when:
-        def response = mockMvc.perform(get("/invoices"))
+        def response = mockMvc.perform(get("/invoices").with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -75,22 +77,10 @@ class InvoiceControllerTest extends Specification {
         invoices.size() > 0
         invoices[0] == invoice
     }
-    def "should return short list of all invoices  " () {
-        when:
-        def response = mockMvc.perform(get("/invoices/list"))
-                .andExpect(status().isOk())
-                .andReturn()
-                .response
-                .contentAsString
-
-        then:
-        response != null
-
-    }
 
     def "should return short list of invoices"() {
         when:
-        def response = mockMvc.perform(get("/invoices/list"))
+        def response = mockMvc.perform(get("/invoices/list").with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -110,7 +100,7 @@ class InvoiceControllerTest extends Specification {
 
         when:
         def response = mockMvc.perform(
-                put("/invoices").content(updatedInvoiceAsJson).contentType(MediaType.APPLICATION_JSON))
+                put("/invoices").content(updatedInvoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -125,7 +115,7 @@ class InvoiceControllerTest extends Specification {
         def id = updatedInvoice.getInvoiceId()
 
         when:
-        def response = mockMvc.perform(get("/invoices/" + id))
+        def response = mockMvc.perform(get("/invoices/" + id).with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -140,7 +130,7 @@ class InvoiceControllerTest extends Specification {
         def id = updatedInvoice.getInvoiceId()
 
         when:
-        def response = mockMvc.perform(delete("/invoices/" + id))
+        def response = mockMvc.perform(delete("/invoices/" + id).with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
@@ -152,7 +142,7 @@ class InvoiceControllerTest extends Specification {
 
     def "should return empty list of invoices"() {
         when:
-        def response = mockMvc.perform(get("/invoices"))
+        def response = mockMvc.perform(get("/invoices").with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response

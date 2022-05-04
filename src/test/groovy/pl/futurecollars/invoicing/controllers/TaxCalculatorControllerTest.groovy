@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.MockMvc
 import pl.futurecollars.invoicing.file.JsonService
 import pl.futurecollars.invoicing.fixtures.CompanyFixture
@@ -19,6 +20,8 @@ import java.math.RoundingMode
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+
+@WithMockUser
 @SpringBootTest
 @AutoConfigureMockMvc
 class TaxCalculatorControllerTest extends Specification {
@@ -60,10 +63,10 @@ class TaxCalculatorControllerTest extends Specification {
         def invoiceAsJson = jsonServiceInvoice.convertToJson(invoice)
         def invoice1AsJson = jsonServiceInvoice.convertToJson(invoice1)
         mockMvc.perform(
-                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON))
+                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
                 .andExpect(status().isOk())
         mockMvc.perform(
-                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON))
+                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
                 .andExpect(status().isOk())
         def updatedCompanyAsJson = jsonServiceCompany.convertToJson(company)
         def taxReport = TaxReport.builder()
@@ -84,7 +87,7 @@ class TaxCalculatorControllerTest extends Specification {
                 .build()
         when:
         def response = mockMvc.perform(
-                post("/tax").content(updatedCompanyAsJson).contentType(MediaType.APPLICATION_JSON))
+                post("/tax").content(updatedCompanyAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response
