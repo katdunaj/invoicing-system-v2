@@ -19,33 +19,37 @@ public class InvoiceService implements GenericRepository<Invoice> {
   private final InvoiceRepository invoiceRepository;
   private final InvoiceListMapper invoiceListMapper;
 
-    @Override
-    public Invoice save(Invoice invoice) {
+  @Override
+  public Invoice save(Invoice invoice) {
     return invoiceRepository.save(invoice);
   }
 
-    @Override
-    public Invoice getById(UUID id) {
+  @Override
+  public Invoice getById(UUID id) {
     return invoiceRepository.findById(id).orElseThrow(() -> new RuntimeException("Invoice Id: " + id + " does not exist"));
   }
 
-    @Override
-    public List<Invoice> getAll() {
+  @Override
+  public List<Invoice> getAll() {
     List<Invoice> invoiceList = new ArrayList<>();
     invoiceRepository.findAll().forEach(invoiceList::add);
     return invoiceList;
   }
 
-    @Override
-    public Invoice update(Invoice updatedInvoice) {
+  public List<InvoiceListDto> getList() {
+    return getAll().stream().map(invoiceListMapper::invoiceListToDto).collect(Collectors.toList());
+  }
+
+  @Override
+  public Invoice update(Invoice updatedInvoice) {
     if (invoiceRepository.findById(updatedInvoice.getInvoiceId()).isPresent()) {
       return invoiceRepository.save(updatedInvoice);
     }
     return null;
   }
 
-    @Override
-    public boolean delete(UUID id) {
+  @Override
+  public boolean delete(UUID id) {
     if (invoiceRepository.findById(id).isPresent()) {
       invoiceRepository.deleteById(id);
       return true;
@@ -53,13 +57,8 @@ public class InvoiceService implements GenericRepository<Invoice> {
     return false;
   }
 
-  public List<InvoiceListDto> getList() {
-    return getAll().stream().map(invoiceListMapper::invoiceListToDto).collect(Collectors.toList());
-  }
-
-    @Override
-    public void clear() {
+  @Override
+  public void clear() {
     invoiceRepository.deleteAll();
   }
-  }
-
+}

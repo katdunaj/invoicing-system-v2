@@ -10,8 +10,8 @@ import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import pl.futurecollars.invoicing.common.CorsFilter;
 
-@EnableWebSecurity
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Autowired
@@ -22,21 +22,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-
-    http.httpbasic()
+    http.httpBasic()
       .and()
       .addFilterBefore(corsFilter, ChannelProcessingFilter.class);
+
+    if (disableCsrf) {
+      http.csrf().disable();
+    } else {
+      http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()));
+    }
   }
 
-  if(disableCsrf)
-
-  {
-    http.csrf().disable();
-  } else
-
-  {
-    http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()));
-  }
 }
-
 

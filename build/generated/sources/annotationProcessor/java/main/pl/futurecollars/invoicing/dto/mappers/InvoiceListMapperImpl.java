@@ -8,7 +8,7 @@ import pl.futurecollars.invoicing.model.Invoice;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-03T18:19:29+0200",
+    date = "2022-05-07T20:59:31+0200",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.13 (Eclipse Adoptium)"
 )
 @Component

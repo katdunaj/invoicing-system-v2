@@ -2,18 +2,22 @@ package pl.futurecollars.invoicing.controllers.company;
 
 import java.util.List;
 import java.util.UUID;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import pl.futurecollars.invoicing.dto.CompanyDto;
 import pl.futurecollars.invoicing.dto.CompanyListDto;
-import pl.futurecollars.invoicing.model.Company;
+import pl.futurecollars.invoicing.dto.CreateCompanyDto;
 import pl.futurecollars.invoicing.service.company.CompanyService;
 
 @Slf4j
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 @RestController
 public class CompanyController implements CompanyControllerApi {
@@ -21,14 +25,14 @@ public class CompanyController implements CompanyControllerApi {
   private final CompanyService companyService;
 
   @Override
-  public ResponseEntity<Company> save(@RequestBody Company company) {
-    log.debug("Adding new company to Database");
+  public ResponseEntity<CompanyDto> save(@RequestBody @Valid CompanyDto company) {
+    log.info("Adding new company to Database" + company);
     return ResponseEntity.ok()
       .body(companyService.save(company));
   }
 
   @Override
-  public ResponseEntity<List<Company>> getAll() {
+  public ResponseEntity<List<CompanyDto>> getAll() {
     log.debug("Getting all companies from Database");
     return ResponseEntity.ok()
       .body(companyService.getAll());
@@ -36,14 +40,13 @@ public class CompanyController implements CompanyControllerApi {
 
   @Override
   public ResponseEntity<List<CompanyListDto>> getList() {
-    log.debug("Getting all companies from Database");
+    log.debug("Getting short list of all companies from Database");
     return ResponseEntity.ok()
       .body(companyService.getList());
-
   }
 
   @Override
-  public ResponseEntity<Company> getById(@PathVariable UUID id) {
+  public ResponseEntity<CompanyDto> getById(@PathVariable UUID id) {
     log.debug("Getting company Id: {} from Database", id);
     try {
       return ResponseEntity.ok()
@@ -55,7 +58,7 @@ public class CompanyController implements CompanyControllerApi {
   }
 
   @Override
-  public ResponseEntity<Company> update(@RequestBody Company company) {
+  public ResponseEntity<CompanyDto> update(@RequestBody @Valid CompanyDto company) {
     log.debug("Updating company Id: {} in Database", company.getCompanyId());
     return ResponseEntity.ok()
       .body(companyService.update(company));

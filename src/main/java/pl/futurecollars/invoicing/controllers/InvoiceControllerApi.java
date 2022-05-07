@@ -27,13 +27,13 @@ public interface InvoiceControllerApi {
   @GetMapping
   ResponseEntity<List<Invoice>> getAll();
 
-  @ApiOperation("Get invoice by ID")
-  @GetMapping(path = "/{id}")
-  ResponseEntity<Invoice> getById(@PathVariable UUID id);
-
   @ApiOperation("Get short list of all invoices")
   @GetMapping(path = "/list")
   ResponseEntity<List<InvoiceListDto>> getList();
+
+  @ApiOperation("Get invoice by ID")
+  @GetMapping(path = "/{id}")
+  ResponseEntity<Invoice> getById(@PathVariable UUID id);
 
   @ApiOperation("Update given invoice")
   @PutMapping

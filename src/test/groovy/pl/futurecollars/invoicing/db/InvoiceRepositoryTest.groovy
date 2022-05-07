@@ -12,11 +12,11 @@ import pl.futurecollars.invoicing.service.InvoiceService
 class InvoiceRepositoryTest extends GenericRepositoryTest {
 
     @Autowired
-    private InvoiceRepository invoiceRepository;
+    private InvoiceRepository invoiceRepository
 
-    @Override
     GenericRepository getDatabaseInstance() {
         assert invoiceRepository != null
         new InvoiceService(invoiceRepository)
     }
 }
+

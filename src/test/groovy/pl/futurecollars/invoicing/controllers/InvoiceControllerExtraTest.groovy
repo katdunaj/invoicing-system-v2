@@ -6,15 +6,14 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.MockMvc
-import pl.futurecollars.invoicing.file.JsonService
 import pl.futurecollars.invoicing.fixtures.InvoiceFixture
 import pl.futurecollars.invoicing.model.Invoice
-
-
+import pl.futurecollars.invoicing.file.JsonService
 import pl.futurecollars.invoicing.service.InvoiceService
 import spock.lang.Shared
 import spock.lang.Specification
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
@@ -32,11 +31,9 @@ class InvoiceControllerExtraTest extends Specification {
     @Autowired
     private InvoiceService invoiceRepository
 
-    def setup() {
-        invoiceRepository.clear() }
+    def setup() { invoiceRepository.clear() }
 
-    def cleanup() {
-        invoiceRepository.clear() }
+    def cleanup() { invoiceRepository.clear() }
 
     @Autowired
     private JsonService<Invoice> jsonService
@@ -44,11 +41,10 @@ class InvoiceControllerExtraTest extends Specification {
     @Autowired
     private JsonService<Invoice[]> jsonListService
 
-
     @Shared
     def invoice = InvoiceFixture.invoice(1)
-    def invoice1 = InvoiceFixture.invoice(2)
-    def invoice2 = InvoiceFixture.invoice(3)
+    def invoice1 = InvoiceFixture.invoice(3)
+    def invoice2 = InvoiceFixture.invoice(5)
 
     def "should add 3 invoices"() {
         given:
@@ -59,12 +55,15 @@ class InvoiceControllerExtraTest extends Specification {
         expect:
         mockMvc.perform(
                 post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                .andExpect(status().isOk())
 
         mockMvc.perform(
-                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                .andExpect(status().isOk())
 
         mockMvc.perform(
-                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                post("/invoices").content(invoice2AsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                .andExpect(status().isOk())
     }
 
     def "should return list of 2 invoices"() {
@@ -75,9 +74,11 @@ class InvoiceControllerExtraTest extends Specification {
         when:
         mockMvc.perform(
                 post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                .andExpect(status().isOk())
 
         mockMvc.perform(
-                post("/invoices").content(invoiceAsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                .andExpect(status().isOk())
 
         def response = mockMvc.perform(get("/invoices").with(csrf()))
                 .andExpect(status().isOk())
@@ -200,7 +201,7 @@ class InvoiceControllerExtraTest extends Specification {
                 .contentAsString
 
         def post2Response = mockMvc.perform(
-                post("/invoices").content(invoice1AsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                post("/invoices").content(invoice2AsJson).contentType(MediaType.APPLICATION_JSON).with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .response

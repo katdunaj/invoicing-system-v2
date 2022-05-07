@@ -1,23 +1,14 @@
 logging:
   level:
     root: info
-    pl.futurecollars.invoicing: debug
-    org.springframework: warn
+    pl.futurecollars.invoicing: error
+    org.springframework: error
 
-invoicing-system:
-  database: mongo
 
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL94Dialect
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 1122
-    driver-class-name: org.postgresql.Driver
-  flyway:
-    enabled: true
+  profiles:
+    active: test
+
+invoicing-system:
+  csrf:
+    disable: true

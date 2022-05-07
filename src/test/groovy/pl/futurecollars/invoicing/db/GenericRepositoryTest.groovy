@@ -12,11 +12,12 @@ abstract class GenericRepositoryTest extends Specification {
 
     abstract GenericRepository getDatabaseInstance();
 
-    def issuer = new Company ("112-425-567-89", "ul.Ogrodowa 3 Kampinos", "Telnet", 1000.00, 1000.00)
-    def receiver = new Company("112-425-567-69", "ul.Ogrodowa 6 Kampinos", "Netplus", 1000.00, 1000.00)
+    def issuer = new Company (UUID.randomUUID(),"112-425-567-89", "ul.Ogrodowa 3 Kampinos", "Telnet", 1000.00, 1000.00)
+    def receiver = new Company(UUID.randomUUID(),"112-425-567-69", "ul.Ogrodowa 6 Kampinos", "Netplus", 1000.00, 1000.00)
     def date = LocalDate.of(2017, 7, 21)
+    def invoiceNumber = "2021/09/30/000123"
     def entries = new ArrayList<InvoiceEntry>()
-    def invoice = new Invoice(date, issuer, receiver, entries)
+    def invoice = new Invoice(UUID.randomUUID(),invoiceNumber,date, issuer, receiver, entries)
     GenericRepository genericRepository
 
     def setup() {
@@ -30,7 +31,8 @@ abstract class GenericRepositoryTest extends Specification {
 
         then:
         genericRepository.getById(result.getId()) != null
-        genericRepository.getById(result.getId()).getIssuerID().getName() == "Telnet"
+        genericRepository.getById(result.getId()).getIssuerID().getName() == "XXX"
+
 
     }
 
@@ -43,7 +45,7 @@ abstract class GenericRepositoryTest extends Specification {
 
         then:
         result != null
-        result.getIssuerID().getName() == "Telnet"
+        result.getIssuerID().getName() == "XXX"
     }
 
     def "should get list of all invoices from database"() {
@@ -63,8 +65,8 @@ abstract class GenericRepositoryTest extends Specification {
 
     def "should update invoice in the database"() {
         setup:
-        def issuerUpdated = new Company("123-45-67-222", "Ul. Ogrodowa 13/2, 05-087 Kampinos", "Nokia", 1000.00, 1000.00)
-        def invoiceUpdated = new Invoice(date, issuerUpdated, receiver, entries)
+        def issuerUpdated = new Company(UUID.randomUUID(),"112-425-567-89", "ul.Ogrodowa 3 Kampinos", "Telnet", 1000.00, 1000.00)
+        def invoiceUpdated = new Invoice(UUID.randomUUID(),invoiceNumber,date, issuer, receiver, entries)
         genericRepository.save(invoice)
         invoiceUpdated.setInvoiceId(invoice.getInvoiceId())
 

@@ -8,3 +8,7 @@ logging:
 spring:
   profiles:
     active: test
+
+invoicing-system:
+  csrf:
+    disable: true

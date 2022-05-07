@@ -4,18 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment="Implement companies UI in Angular">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/common/CorsFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/configuration/WebSecurityConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/company.js" afterDir="false" />
+    <list default="true" id="8127f55b-f383-4803-af38-3ba2fce8e97d" name="Changes" comment="Enable Spring Security">
+      <change afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/pl/futurecollars/invoicing/dto/mappers/CompanyMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/CompanyDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/CreateCompanyDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/mappers/CompanyMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/services/company.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/services/invoice.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/app/services/tax-report-service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/pl/futurecollars/invoicing/dto/mappers/CompanyListMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/pl/futurecollars/invoicing/dto/mappers/CompanyListMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/pl/futurecollars/invoicing/dto/mappers/InvoiceListMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/pl/futurecollars/invoicing/dto/mappers/InvoiceListMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/common/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/common/CorsFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/configuration/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/configuration/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/InvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/InvoiceControllerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/InvoiceControllerApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyControllerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/controllers/company/CompanyControllerApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/CompanyListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/CompanyListDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/InvoiceListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/dto/InvoiceListDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/InvoiceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/company/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/futurecollars/invoicing/service/company/CompanyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/company.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/CompanyControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/CompanyControllerTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerExtraTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/InvoiceControllerTest.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/TaxCalculatorControllerTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/controllers/TaxCalculatorControllerTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/GenericRepositoryTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/GenericRepositoryTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/InvoiceRepositoryTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/db/InvoiceRepositoryTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/CompanyServiceTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/pl/futurecollars/invoicing/service/CompanyServiceTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,8 +130,8 @@
       <recent name="pl.futurecollars.invoicing.service.company" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TaxCalculatorControllerTest">
-    <configuration name="CompanyControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.pl.futurecollars.invoicing in invoicing-system-kdunaj.test">
+    <configuration name="CompanyControllerTest.should add single company" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="invoicing-system-kdunaj.test" />
       <extension name="coverage">
         <pattern>
@@ -118,27 +141,28 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.controllers" />
       <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.controllers.CompanyControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="should add single company" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InvoiceControllerExtraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InvoiceControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="invoicing-system-kdunaj.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.futurecollars.invoicing.file.*" />
+          <option name="PATTERN" value="pl.futurecollars.invoicing.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.controllers" />
-      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.controllers.InvoiceControllerExtraTest" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.controllers.InvoiceControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SqlDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InvoiceRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="invoicing-system-kdunaj.test" />
       <extension name="coverage">
         <pattern>
@@ -147,7 +171,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.db" />
-      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.db.SqlDatabaseTest" />
+      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.db.InvoiceRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -168,28 +192,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaxCalculatorServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="pl.futurecollars.invoicing in invoicing-system-kdunaj.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="invoicing-system-kdunaj.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pl.futurecollars.invoicing.service.*" />
+          <option name="PATTERN" value="pl.futurecollars.invoicing.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing.service" />
-      <option name="MAIN_CLASS_NAME" value="pl.futurecollars.invoicing.service.TaxCalculatorServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="pl.futurecollars.invoicing" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TaxCalculatorServiceTest" />
+        <item itemvalue="JUnit.pl.futurecollars.invoicing in invoicing-system-kdunaj.test" />
+        <item itemvalue="JUnit.CompanyControllerTest.should add single company" />
+        <item itemvalue="JUnit.InvoiceRepositoryTest" />
         <item itemvalue="JUnit.TaxCalculatorControllerTest" />
-        <item itemvalue="JUnit.SqlDatabaseTest" />
-        <item itemvalue="JUnit.InvoiceControllerExtraTest" />
-        <item itemvalue="JUnit.CompanyControllerTest" />
+        <item itemvalue="JUnit.InvoiceControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -307,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651679125126</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Enable Spring Security">
+      <created>1651693718180</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1651693718180</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -339,6 +369,7 @@
     <MESSAGE value="add noSQL database, MongoDbDatabase" />
     <MESSAGE value=" Implement support for companies" />
     <MESSAGE value="Implement companies UI in Angular" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement companies UI in Angular" />
+    <MESSAGE value="Enable Spring Security" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enable Spring Security" />
   </component>
 </project>

@@ -25,7 +25,7 @@ public class Company {
   @GeneratedValue
   private UUID companyId;
 
-  @ApiModelProperty(value = "Tax identification number", required = true, example = "1234567819")
+  @ApiModelProperty(value = "Tax identification number", required = true, example = "123-45-61-819")
   private String taxIdentificationNumber;
 
   @ApiModelProperty(value = "Company address", required = true, example = "Ul. Ogrodowa 14A/6, 00-111 Błonie")

@@ -15,11 +15,10 @@ import pl.futurecollars.invoicing.service.InvoiceService
 import pl.futurecollars.invoicing.service.TaxReport
 import spock.lang.Shared
 import spock.lang.Specification
-
 import java.math.RoundingMode
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf
 
 @WithMockUser
 @SpringBootTest
